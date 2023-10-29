@@ -12,39 +12,56 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 107, 222, 31),
-          foregroundColor: Colors.red,
-          leading: Icon(
-            Icons.menu,
-            color: Colors.deepPurple,
-          ),
-          title: Text("First Application"),
-          actions: [Icon(Icons.call), Icon(Icons.video_call_outlined)],
-        ),
-        body: Center(
-          child: Container(
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 101, 166, 219),
-                borderRadius: BorderRadius.circular(0)),
-            width: 200,
-            height: 200,
-            //  padding: EdgeInsets.all(12.0),
-            // margin: EdgeInsets.all(12.0),
-            child: Center(
-              child: Text(
-                "Welcome to our first application",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  //color: Colors.green
+          appBar: AppBar(title: Text("My Application")),
+          body: Container(
+            width: double.infinity,
+            color: Colors.black,
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // 1 + 1 + 1 + 1 / 4
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.red,
+                    child: Text(
+                      "First Text",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
                 ),
-              ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    color: Colors.amber,
+                    child: Text(
+                      "Second Text",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.green,
+                    child: Text(
+                      "Third Text",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.purple,
+                    child: Text(
+                      "Fourth Text",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ),
-      ),
+          )),
     );
   }
 }
