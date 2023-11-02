@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_course_october/login_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,34 +10,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(title: Text("My Application")),
-          body: Container(
-            height: double.infinity,
-            color: Colors.blue,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  color: Colors.red,
-                  child: Text(
-                    "First Text",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-                Container(
-                  color: Colors.green,
-                  child: Text(
-                    "Second Text",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ],
-            ),
-          )),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: LoginScreen());
   }
 }
