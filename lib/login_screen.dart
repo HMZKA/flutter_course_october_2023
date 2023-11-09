@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_course_october/telegram_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -66,7 +67,11 @@ class LoginScreen extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all(Colors.green),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => TelegramScreen(),
+                    ));
+                  },
                   child: SizedBox(
                       width: MediaQuery.of(context).size.width / 2.5,
                       child: const Text(

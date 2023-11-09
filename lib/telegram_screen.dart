@@ -12,7 +12,7 @@ class TelegramScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 3, 48, 84),
         elevation: 0.0,
         title: const Text("Telegram"),
-        leading: const Icon(Icons.menu),
+        //  leading: const Icon(Icons.menu),
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
       ),
       body: ListView.separated(
