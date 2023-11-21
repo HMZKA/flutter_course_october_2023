@@ -15,6 +15,12 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeScreenState());
   }
 
+  bool isDark = false;
+  changeTheme() {
+    isDark = !isDark;
+    emit(ChangeThemeModeState());
+  }
+
   NewsModel? teslaNewsModel;
   getTeslaNews() {
     emit(GetTeslaNewsLoadingState());
@@ -44,6 +50,22 @@ class AppCubit extends Cubit<AppState> {
     }).catchError((error) {
       print(error.toString());
       emit(GetSportsNewsErrorState());
+    });
+  }
+
+  NewsModel? searchModel;
+  search({required String keyWord}) {
+    emit(SearchNewsLoadingState());
+    DioHelper.get(path: "everything", queryParameters: {
+      "q": keyWord,
+      "apiKey": "a269e4f1de864efc85f38b36f1bae318"
+    }).then((value) {
+      searchModel = NewsModel.fromJson(value?.data);
+      print(searchModel?.articles[0].title);
+      emit(SearchNewsSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(SearchNewsErrorState());
     });
   }
 }

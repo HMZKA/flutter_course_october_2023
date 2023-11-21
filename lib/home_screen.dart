@@ -6,6 +6,7 @@ import 'package:flutter_course_october/cubit/app_cubit.dart';
 import 'package:flutter_course_october/dio_helper.dart';
 import 'package:flutter_course_october/home_work_screen.dart';
 import 'package:flutter_course_october/news_model.dart';
+import 'package:flutter_course_october/search_screen.dart';
 import 'package:flutter_course_october/sport_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,17 +14,33 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List screens = [CarScreen(), SportScreen(), HomeWorkScreen()];
+    List screens = [
+      const CarScreen(),
+      const SportScreen(),
+      const HomeWorkScreen()
+    ];
     return BlocConsumer<AppCubit, AppState>(
       listener: (context, state) {},
       builder: (context, state) {
         var cubit = AppCubit().get(context);
         return Scaffold(
           appBar: AppBar(
-            foregroundColor: Colors.black,
-            backgroundColor: Colors.white,
-            title: Text("NewsApp"),
-            actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
+            title: const Text("NewsApp"),
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ));
+                  },
+                  icon: const Icon(Icons.search)),
+              IconButton(
+                onPressed: () {
+                  cubit.changeTheme();
+                },
+                icon: const Icon(CupertinoIcons.moon_stars_fill),
+              )
+            ],
           ),
           bottomNavigationBar: BottomNavigationBar(
               currentIndex: cubit.index,
