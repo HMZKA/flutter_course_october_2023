@@ -1,13 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course_october/car_screen.dart';
-import 'package:flutter_course_october/cubit/app_cubit.dart';
-import 'package:flutter_course_october/dio_helper.dart';
-import 'package:flutter_course_october/home_work_screen.dart';
-import 'package:flutter_course_october/news_model.dart';
-import 'package:flutter_course_october/search_screen.dart';
-import 'package:flutter_course_october/sport_screen.dart';
+import 'package:flutter_course_october/controllers/cubit/app_cubit.dart';
+import 'package:flutter_course_october/screens/car_screen.dart';
+
+import 'package:flutter_course_october/utils/dio_helper.dart';
+import 'package:flutter_course_october/screens/home_work_screen.dart';
+import 'package:flutter_course_october/models/news_model.dart';
+import 'package:flutter_course_october/screens/search_screen.dart';
+import 'package:flutter_course_october/screens/sport_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:buildcondition/buildcondition.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course_october/components.dart';
-import 'package:flutter_course_october/cubit/app_cubit.dart';
+import 'package:flutter_course_october/components/components.dart';
+import '/controllers/cubit/app_cubit.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

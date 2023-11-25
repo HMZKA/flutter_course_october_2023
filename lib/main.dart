@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course_october/cubit/app_cubit.dart';
-import 'package:flutter_course_october/dio_helper.dart';
-import 'package:flutter_course_october/home_screen.dart';
+import 'package:flutter_course_october/utils/storage.dart';
+import '/controllers/cubit/app_cubit.dart';
+import 'package:flutter_course_october/utils/dio_helper.dart';
+import 'package:flutter_course_october/screens/home_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Storage.init();
   DioHelper.init();
   runApp(const MyApp());
 }
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
             home: HomeScreen(),
             darkTheme: ThemeData(
                 scaffoldBackgroundColor: Colors.black,
-                bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                bottomNavigationBarTheme: const BottomNavigationBarThemeData(
                   backgroundColor: Colors.black,
                   unselectedItemColor: Colors.white,
                 ),

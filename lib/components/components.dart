@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_course_october/webview_screen.dart';
+import 'package:flutter_course_october/screens/webview_screen.dart';
 
 Widget buildNewsItem(model, context) {
   return Builder(builder: (context) {

@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course_october/dio_helper.dart';
-import 'package:flutter_course_october/news_model.dart';
+import 'package:flutter_course_october/utils/dio_helper.dart';
+import 'package:flutter_course_october/models/news_model.dart';
+import 'package:flutter_course_october/utils/storage.dart';
 import 'package:meta/meta.dart';
 
 part 'app_state.dart';
@@ -15,9 +16,10 @@ class AppCubit extends Cubit<AppState> {
     emit(ChangeScreenState());
   }
 
-  bool isDark = false;
+  bool isDark = Storage.getStorage(key: "isDark") ?? false;
   changeTheme() {
     isDark = !isDark;
+    Storage.setBool(key: "isDark", value: isDark);
     emit(ChangeThemeModeState());
   }
 
