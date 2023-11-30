@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course_october/cubit/auth_cubit.dart';
+import 'package:flutter_course_october/components/components.dart';
+import 'package:flutter_course_october/cubit/auth_cubit/auth_cubit.dart';
+import 'package:flutter_course_october/cubit/auth_cubit/auth_state.dart';
+import 'package:flutter_course_october/screens/main_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -11,7 +14,15 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is LoginSuccessState) {
+          state.status
+              ? Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(
+                    builder: (context) => MainScreen(),
+                  ),
+                  (route) => false)
+              : showMessage(msg: "Credintials incorrect", color: Colors.red);
+        }
       },
       builder: (context, state) {
         return Scaffold(

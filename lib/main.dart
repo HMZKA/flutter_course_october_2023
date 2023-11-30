@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_course_october/cubit/auth_cubit.dart';
-import 'package:flutter_course_october/dio_helper.dart';
-import 'package:flutter_course_october/login_screen.dart';
+import 'package:flutter_course_october/cubit/app_cubit/app_cubit.dart';
+import 'package:flutter_course_october/cubit/auth_cubit/auth_cubit.dart';
+import 'package:flutter_course_october/screens/main_screen.dart';
+import 'package:flutter_course_october/utils/dio_helper.dart';
+import 'package:flutter_course_october/screens/login_screen.dart';
 
 void main() {
   DioHelper.init();
@@ -14,11 +16,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => AuthCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AppCubit()..getHomeData(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
+        home: MainScreen(),
       ),
     );
   }
