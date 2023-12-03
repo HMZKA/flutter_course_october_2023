@@ -12,3 +12,9 @@ class GetHomeDataLoadingState extends AppState {}
 class GetHomeDataSuccessState extends AppState {}
 
 class GetHomeDataErrorState extends AppState {}
+
+class GetProfileDataLoadingState extends AppState {}
+
+class GetProfileDataSuccessState extends AppState {}
+
+class GetProfileDataErrorState extends AppState {}

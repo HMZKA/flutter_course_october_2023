@@ -27,4 +27,15 @@ class AppCubit extends Cubit<AppState> {
       emit(GetHomeDataErrorState());
     });
   }
+
+  getProfile() {
+    emit(GetProfileDataLoadingState());
+    DioHelper.get(path: "profile").then((value) {
+      print(value?.data);
+      emit(GetProfileDataSuccessState());
+    }).catchError((error) {
+      print(error.toString());
+      emit(GetProfileDataErrorState());
+    });
+  }
 }
