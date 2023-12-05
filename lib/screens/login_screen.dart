@@ -4,6 +4,7 @@ import 'package:flutter_course_october/components/components.dart';
 import 'package:flutter_course_october/cubit/auth_cubit/auth_cubit.dart';
 import 'package:flutter_course_october/cubit/auth_cubit/auth_state.dart';
 import 'package:flutter_course_october/screens/main_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localization.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -28,6 +29,33 @@ class LoginScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+            actions: [
+              PopupMenuButton(
+                  onSelected: (value) {
+                    AuthCubit().get(context).changeLocale(value);
+                  },
+                  itemBuilder: (context) => const [
+                        PopupMenuItem(
+                          value: Locale("ar"),
+                          child: Text("العربية"),
+                        ),
+                        PopupMenuItem(
+                          value: Locale("en"),
+                          child: Text("English"),
+                        ),
+                      ]
+                  //    AppLocalizations.supportedLocales
+                  //       .map((e) => PopupMenuItem(
+                  //             value: e,
+                  //             onTap: () {
+                  //               AuthCubit().get(context).changeLocale(e);
+                  //             },
+                  //             child: Text(e.languageCode),
+                  //           ))
+                  //       .toList(),
+                  )
+            ],
           ),
           body: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -53,7 +81,7 @@ class LoginScreen extends StatelessWidget {
                           filled: true,
                           prefixIcon: const Icon(Icons.email),
                           hintText: "example@example.com",
-                          label: const Text("Email"),
+                          label: Text("${AppLocalizations.of(context)?.email}"),
                           border: OutlineInputBorder(
                               //  borderSide: BorderSide(width: 5.0, strokeAlign: 2.2),
                               borderRadius: BorderRadius.circular(20))),
@@ -73,7 +101,8 @@ class LoginScreen extends StatelessWidget {
                           prefixIcon: const Icon(Icons.lock),
                           suffixIcon: const Icon(Icons.visibility),
                           hintText: "P@ssw0rd",
-                          label: const Text("Password"),
+                          label:
+                              Text("${AppLocalizations.of(context)?.password}"),
                           border: OutlineInputBorder(
                               //  borderSide: BorderSide(width: 5.0, strokeAlign: 2.2),
                               borderRadius: BorderRadius.circular(20))),
@@ -97,22 +126,22 @@ class LoginScreen extends StatelessWidget {
                             },
                             child: SizedBox(
                                 width: MediaQuery.of(context).size.width / 2.5,
-                                child: const Text(
-                                  "Log in",
+                                child: Text(
+                                  "${AppLocalizations.of(context)?.login}",
                                   textAlign: TextAlign.center,
                                 ))),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          "You don't have account?",
+                        Text(
+                          "${AppLocalizations.of(context)?.dontHaveAccount}",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w500),
                         ),
                         TextButton(
                             onPressed: () {},
                             child: Text(
-                              "Create one",
+                              "${AppLocalizations.of(context)?.createAccount}",
                               style: TextStyle(color: Colors.purple[900]),
                             ))
                       ],

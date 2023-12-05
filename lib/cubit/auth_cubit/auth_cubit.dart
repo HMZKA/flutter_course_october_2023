@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_course_october/cubit/auth_cubit/auth_state.dart';
 import 'package:flutter_course_october/utils/dio_helper.dart';
@@ -8,6 +9,12 @@ import 'package:flutter_course_october/utils/storage.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   AuthCubit get(context) => BlocProvider.of(context);
+  Locale locale = Locale("en");
+  changeLocale(value) {
+    locale = value;
+    emit(ChangeLocaleState());
+  }
+
   ProfileModel? profileModel;
   login({required String email, required String password}) {
     emit(LoginLoadingState());
